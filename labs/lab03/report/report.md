@@ -1,74 +1,149 @@
-**РОССИЙСКИЙ УНИВЕРСИТЕТ ДРУЖБЫ НАРОДОВ**
+---
+## Front matter
+title: "Шаблон отчёта по лабораторной работе"
+subtitle: "Простейший вариант"
+author: "Манукян Захар"
 
-**Факультет физико-математических и естественных наук**
+## Generic otions
+lang: ru-RU
+toc-title: "Содержание"
 
-**Кафедра прикладной информатики и теории вероятностей**
+## Bibliography
+bibliography: bib/cite.bib
+csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl
 
-**ОТЧЕТ**
+## Pdf output format
+toc: true # Table of contents
+toc-depth: 2
+lof: true # List of figures
+lot: true # List of tables
+fontsize: 12pt
+linestretch: 1.5
+papersize: a4
+documentclass: scrreprt
+## I18n polyglossia
+polyglossia-lang:
+  name: russian
+  options:
+	- spelling=modern
+	- babelshorthands=true
+polyglossia-otherlangs:
+  name: english
+## I18n babel
+babel-lang: russian
+babel-otherlangs: english
+## Fonts
+mainfont: IBM Plex Serif
+romanfont: IBM Plex Serif
+sansfont: IBM Plex Sans
+monofont: IBM Plex Mono
+mathfont: STIX Two Math
+mainfontoptions: Ligatures=Common,Ligatures=TeX,Scale=0.94
+romanfontoptions: Ligatures=Common,Ligatures=TeX,Scale=0.94
+sansfontoptions: Ligatures=Common,Ligatures=TeX,Scale=MatchLowercase,Scale=0.94
+monofontoptions: Scale=MatchLowercase,Scale=0.94,FakeStretch=0.9
+mathfontoptions:
+## Biblatex
+biblatex: true
+biblio-style: "gost-numeric"
+biblatexoptions:
+  - parentracker=true
+  - backend=biber
+  - hyperref=auto
+  - language=auto
+  - autolang=other*
+  - citestyle=gost-numeric
+## Pandoc-crossref LaTeX customization
+figureTitle: "Рис."
+tableTitle: "Таблица"
+listingTitle: "Листинг"
+lofTitle: "Список иллюстраций"
+lotTitle: "Список таблиц"
+lolTitle: "Листинги"
+## Misc options
+indent: true
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{float} # keep figures where there are in the text
+  - \floatplacement{figure}{H} # keep figures where there are in the text
+---
 
-**по лабораторной работе №**
+# Цель работы
 
-*[дисциплина: Архитектура компьютера]{.underline}*
+Целью работы является освоение процедуры оформления отчетов с помощью легковесного языка разметки Markdown. 
 
-[Студент: Манукян Захар]{.underline}
 
-Группа: НБИбд-03-24
+# Теоретическое введение
 
-**МОСКВА**
+Здесь описываются теоретические аспекты, связанные с выполнением работы.
 
-2024 г.
+Например, в табл. [-@tbl:std-dir] приведено краткое описание стандартных каталогов Unix.
 
-1 Цель работы
+: Описание некоторых каталогов файловой системы GNU Linux {#tbl:std-dir}
 
-Целью работы является освоение процедуры оформления отчетов с помощью
-легковесного языка разметки Markdown.
+| Имя каталога | Описание каталога                                                                                                          |
+|--------------|----------------------------------------------------------------------------------------------------------------------------|
+| `/`          | Корневая директория, содержащая всю файловую                                                                               |
+| `/bin `      | Основные системные утилиты, необходимые как в однопользовательском режиме, так и при обычной работе всем пользователям     |
+| `/etc`       | Общесистемные конфигурационные файлы и файлы конфигурации установленных программ                                           |
+| `/home`      | Содержит домашние директории пользователей, которые, в свою очередь, содержат персональные настройки и данные пользователя |
+| `/media`     | Точки монтирования для сменных носителей                                                                                   |
+| `/root`      | Домашняя директория пользователя  `root`                                                                                   |
+| `/tmp`       | Временные файлы                                                                                                            |
+| `/usr`       | Вторичная иерархия для данных пользователя                                                                                 |
 
-2 Выполнение лабарторной работы
+Более подробно про Unix см. в [@tanenbaum_book_modern-os_ru; @robbins_book_bash_en; @zarrelli_book_mastering-bash_en; @newham_book_learning-bash_en].
 
-Открываю терминал. Перешёл в каталог курса сформированный при выполнении
-лаборатор- ной работы No2 как на рисунке и обновил локальный
-репозиторий, скачав изменения из удаленного репозитория с помощью
-команды git pull (рис 2.1)
+# Выполнение лабораторной работы
 
-![](media/image1.png){width="6.692361111111111in"
-height="0.6430555555555556in"}Рис 2.1
+ Открываю терминал. Перешёл в каталог курса сформированный при выполнении лаборатор- ной работы No2 как на рисунке и обновил локальный репозиторий, скачав изменения из удаленного репозитория с помощью команды git pull (рис. [-@fig:001]).
 
-Перехожу в каталог с шаблоном отчета по лабараторной работе No3 (рис
-2.2)
+![рис 1](image/рис1.png){#fig:001 width=70%}
 
-![](media/image2.png){width="6.692361111111111in"
-height="0.27708333333333335in"}Рис 2.2
+Перехожу в каталог с шаблоном отчета по лабараторной работе No3 
 
-Провожу компиляцию шаблона с использованием Makefile. Для этого ввожу
-команду make (рис 2.3)
+![рис 2](image/рис2.png){#fig:002 width=70%}
 
-![](media/image3.png){width="6.692361111111111in"
-height="0.3527777777777778in"}Рис 2.3
+Провожу компиляцию шаблона с использованием Makefile. Для этого ввожу команду make 
 
-Проверяю успешную компиляцию файлов report.docx и report.pdf. (рис 2.4)
+![рис 3](image/рис3.png){#fig:003 width=70%}
 
-![](media/image4.png){width="6.692361111111111in"
-height="2.1305555555555555in"}Рис 2.4
+Проверяю успешную компиляцию файлов report.docx и report.pdf
 
-Удаляю полученный файл с использованием Makefile. Для этого ввожу
-команду make clean. (рис 2.5)
+![рис 4](image/рис4.png){#fig:004 width=70%}
 
-![](media/image5.png){width="6.692361111111111in"
-height="0.8083333333333333in"}Рис 2.5
+Удаляю полученный файл с использованием Makefile. Для этого ввожу команду make clean.
 
-Проверяем коректное удаление файлов report.pdf и report.docx. (рис 2.6)
+![рис 5](image/рис5.png){#fig:005 width=70%}
 
-![](media/image6.png){width="6.692361111111111in"
-height="1.3409722222222222in"}Рис 2.6
+Проверяем коректное удаление файлов report.pdf и report.docx.
 
-Открываю файл report.md через терминал (рис 2.7)
+![рис 6](image/рис6.png){#fig:006 width=70%}
 
-![](media/image7.png){width="6.692361111111111in"
-height="1.0951388888888889in"}Рис 2.7
+Открываю файл report.md через терминал.
 
-Загружаю файлы на Github.
+![рис 7](image/рис7.png){#fig:007 width=70%}
 
-3 Вывод
+Загружаю файлы на Github. 
 
-При выполнении лабораторной работы я освоил процедуры оформления отчета
-с помощью легковесного языка разметки Markdown.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Выводы
+
+При выполнении лабораторной работы я освоил процедуры оформления отчета с помощью легковесного языка разметки Markdown. 
+
+
